@@ -1,2 +1,3 @@
 # Swarm-intelligence-optimization-algorithm
-## CrowSearchAlgorithm(CSA)
+## Crow Search Algorithm(CSA)
+## Sparrow Search Algorithm(SSA)
