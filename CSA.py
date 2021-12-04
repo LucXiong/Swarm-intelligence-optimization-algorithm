@@ -96,13 +96,6 @@ class CSA():
         self.best_x, self.best_y = self.gbest_x, self.gbest_y
         return self.best_x, self.best_y
 
-def fitness(xn, n, pd):  # function for fitness calculation # optimizing function
-    fitness = []
-    for i in range(n):
-        fitness.append(0)
-        for j in range(pd):
-            fitness[i] = fitness[i] + pow(xn[(i, j)], 2)
-    return fitness
 
 def demo_func(x):
     x1 = x[0]
