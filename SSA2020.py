@@ -7,6 +7,8 @@
 
 """
 Ref:https://github.com/changliang5811/SSA_python
+Ref:https://www.tandfonline.com/doi/full/10.1080/21642583.2019.1708830
+Ref:A novel swarm intelligence optimization approach: sparrow search algorithm.pdf
 """
 
 import numpy as np
