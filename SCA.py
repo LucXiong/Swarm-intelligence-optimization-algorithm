@@ -93,12 +93,12 @@ if __name__ == '__main__':
     n_dim = 2
     lb = [-512 for i in range(n_dim)]
     ub = [512 for i in range(n_dim)]
-    demo_func = f12
+    demo_func = f23
     sca = sca(n_dim=2, pop_size=40, max_iter=150, lb=lb, ub=ub, func=demo_func)
     sca.run()
     print('best_x is ', sca.gbest_x, 'best_y is', sca.gbest_y)
-    # f11 best_x is  [-0.08631097  0.71930416] best_y is -1.0311910818775485
-    # f12 best_x is  [449.26653876 465.54725104] best_y is -937.0562555095239
+    # f22 best_x is  [-0.08631097  0.71930416] best_y is -1.0311910818775485
+    # f23 best_x is  [449.26653876 465.54725104] best_y is -937.0562555095239
     print(f'{demo_func(sca.gbest_x)}\t{sca.gbest_x}')
     plt.plot(sca.gbest_y_hist)
     plt.show()
