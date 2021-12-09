@@ -9,7 +9,7 @@
 There are 2 kinds of wolf pack search algorithm.
 The first one called wolf pack search(wps) proposed by Chenguang Yang, Xuyan Tu and Jie Chen in thier paper "Algorithm of Marriage in Honey Bees Optimization Based on the Wolf Pack Search" at 2007 International Conference on Intelligent Pervasive Computing in 2007. The wps code could ref: https://github.com/AlexanderKlanovets/swarm_algorithms/commit/78834820cadbcadb6902e3c171a2a8581255c542
 The second one called wolf pack algorithm proposed by 吴虎胜,张凤鸣,吴庐山 in their paper "一种新的群体智能算法-狼群算法" at Systems Engineering and Electronics in 2013.
-In fact, they are 2 different kinds of algorithm. WPS was shown in  this file, and WPA was in wpa.py.
+In fact, they are 2 different kinds of algorithm. WPS was shown in  this file, and WPA was in wpa.py.(I meet some problems in wpa.py, so it haven't been upload.)
 """
 
 import numpy as np
