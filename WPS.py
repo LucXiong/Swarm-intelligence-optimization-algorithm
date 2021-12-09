@@ -99,7 +99,7 @@ if __name__ == '__main__':
     n_dim = 2
     lb = [-5.12 for i in range(n_dim)]
     ub = [5.12 for i in range(n_dim)]
-    demo_func = f11
+    demo_func = f22
     ssa = wps(pop_size=50, n_dim=n_dim, max_iter=300, lb=lb, ub=ub, func=demo_func, step=0.5)
     ssa.run()
     print('best_x is ', ssa.gbest_x, 'best_y is', ssa.gbest_y)
