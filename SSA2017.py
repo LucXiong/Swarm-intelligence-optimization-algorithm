@@ -105,7 +105,7 @@ if __name__ == '__main__':
     n_dim = 30
     lb = [-5 for i in range(n_dim)]
     ub = [5 for i in range(n_dim)]
-    demo_func = f1
+    demo_func = fu1
     ssa = salp_swarm_algorithm(pop_size=50, n_dim=n_dim, max_iter=150, lb=lb, ub=ub, func=demo_func)
     ssa.run()
     print('best_x is ', ssa.gbest_x, 'best_y is', ssa.gbest_y)
