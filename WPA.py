@@ -264,13 +264,13 @@ if __name__ == '__main__':
     n_dim = 2
     lb = [-5.12 for i in range(n_dim)]
     ub = [5.12 for i in range(n_dim)]
-    demo_func = f11
+    demo_func = f22
     #  def __init__(self, pop_size=50, n_dim=2, alpha=4, beta=6, w=500, lb=-1e5, ub=1e5, max_iter=300, func=None):
     wpa = wpa(pop_size=50, n_dim=n_dim, max_iter=1000, lb=lb, ub=ub, func=demo_func, alpha=4, beta=6, w=500)
     wpa.run()
     print('best_x is ', wpa.gbest_x, 'best_y is', wpa.gbest_y)
-    # f11 is best_x is  [ 0.09110638 -0.71978079] best_y is -1.0312114438653428
-    # f12 is best_x is  [-448.40744098  403.16544094] best_y is -894.7260832993893 效果不行
+    # f22 is best_x is  [ 0.09110638 -0.71978079] best_y is -1.0312114438653428
+    # f23 is best_x is  [-448.40744098  403.16544094] best_y is -894.7260832993893 效果不行
     print(f'{demo_func(wpa.gbest_x)}\t{wpa.gbest_x}')
     plt.plot(wpa.gbest_y_hist)
     plt.show()
