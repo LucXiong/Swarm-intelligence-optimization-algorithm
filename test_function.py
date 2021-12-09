@@ -5,6 +5,9 @@
 # @Project : Model
 # @File : test_func.py
 
+"""
+https://blog.csdn.net/miscclp/article/details/38102831
+"""
 
 import math
 
@@ -131,7 +134,7 @@ def f11(x):
     # min is -1.0316
     x1 = x[0]
     x2 = x[1]
-    result = 4 * x1 ** - 2.1 * x1 ** 4 + x1 ** 6 /3 + x1 * x2 - 4 * x2 ** 2 + 4 * x2 ** 4
+    result = 4 * x1 ** 2 - 2.1 * x1 ** 4 + x1 ** 6 /3 + x1 * x2 - 4 * x2 ** 2 + 4 * x2 ** 4
     return result
 
 def f12(x):
