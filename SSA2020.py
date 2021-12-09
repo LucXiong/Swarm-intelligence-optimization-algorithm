@@ -171,7 +171,7 @@ if __name__ == '__main__':
     # ub = [512, 512]
     lb = [-5, -5]
     ub = [5, 5]
-    ssa = SSA(f13, n_dim=2, pop_size=40, max_iter=150, lb=lb, ub=ub)
+    ssa = SSA(f24, n_dim=2, pop_size=40, max_iter=150, lb=lb, ub=ub)
     ssa.run()
     print('best_x is ', ssa.gbest_x, 'best_y is', ssa.gbest_y)
     # print(f'{demo_func(ssa.gbest_x)}\t{ssa.gbest_x}')
