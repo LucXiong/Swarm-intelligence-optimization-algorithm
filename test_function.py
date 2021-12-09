@@ -11,15 +11,29 @@ https://blog.csdn.net/miscclp/article/details/38102831
 
 import math
 
+# ！usr/bin/env python
+# -*- coding: utf-8 -*-
+# Time : 2021/12/6 10:44
+# @Author : LucXiong
+# @Project : Model
+# @File : test_func.py
+
+"""
+https://blog.csdn.net/miscclp/article/details/38102831
+"""
+
+import math
+
 # Unimodal test functions
-def f1(x):
+def fu1(x):
+    # Sphere function
     # min is 0 at [0 for i in range(len(x)]
     s1 = 0
     for i in range(len(x)):
-        s1 += x[i] ** 2
+        s1 += (x[i] ** 2)
     return s1
 
-def f2(x):
+def fu2(x):
     '''
     min is 0 at [0 for i in range(len(x)]
     :param x: xi ∈ [-10, 10]
@@ -34,7 +48,7 @@ def f2(x):
     result = s1 + s2
     return result
 
-def f3(x):
+def fu3(x):
     # min is 0 at [0 for i in range(len(x)]
     s1 = 0
     for i in range(len(x)):
@@ -45,14 +59,14 @@ def f3(x):
     result = s1
     return result
 
-def f4(x):
+def fu4(x):
     # min is 0 at [0 for i in range(len(x)]
     y = []
     for i in range(len(x)):
         y.append(abs(x[i]))
     return max(y)
 
-def f5(x):
+def fu5(x):
     '''
     min is 0 at [-0.5 for i in range(len(x)]
     :param x:
@@ -64,8 +78,20 @@ def f5(x):
     result = s1
     return result
 
+def fu6(x):
+    ''' Rosenbrock function
+        min is 0 at [1 for i in range(len(x)]
+        :param x:
+        :return:
+        '''
+    s1 = 0
+    for i in range(len(x) - 1):
+        s1 += (100 * (x[i+1] - x[i] ** 2) ** 2 + (x[i] - 1))
+    result = s1
+    return result
+
 # Multimodal test functions
-def f6(x): # Eggholder Function
+def fm1(x): # Eggholder Function
     '''
     min is 0 at [0 for i in range(len(x)]
     :param x: xi ∈ [-5.12, 5.12]
@@ -76,7 +102,7 @@ def f6(x): # Eggholder Function
         result += (x[i] ** 2 - 10 * math.cos(2 * math.pi * x[i]) + 10)
     return result
 
-def f7(x):
+def fm2(x):
     '''
     GRIEWANK FUNCTION:http://www.sfu.ca/~ssurjano/griewank.html
     :param x:
@@ -91,7 +117,7 @@ def f7(x):
     result = s1 - s2 + 1
     return result
 
-def f8(x):
+def fm3(x):
     # min is −418.9829 * len(x)
     s1 = 0
     for i in range(len(x)):
@@ -99,7 +125,7 @@ def f8(x):
     result = s1
     return result
 
-def f9(x):
+def fm4(x):
     '''
     ACKLEY FUNCTION:http://www.sfu.ca/~ssurjano/ackley.html
     :param x:xi ∈ [-32.768, 32.768]
@@ -118,8 +144,9 @@ def f9(x):
     result = s1 + s2 + a + math.exp(1)
     return result
 
-# Fixed-dimension test functions
-def f10(x):
+# . Fixed-dimension test functions
+# two dimension
+def f21(x):
     '''
     BUKIN FUNCTION N. 6:http://www.sfu.ca/~ssurjano/bukin6.html
     :param x:xi ∈ [-32.768, 32.768]
@@ -130,17 +157,68 @@ def f10(x):
     result = s1 + s2
     return result
 
-def f11(x):
+def f22(x):
     # min is -1.0316
     x1 = x[0]
     x2 = x[1]
     result = 4 * x1 ** 2 - 2.1 * x1 ** 4 + x1 ** 6 /3 + x1 * x2 - 4 * x2 ** 2 + 4 * x2 ** 4
     return result
 
-def f12(x):
+def f23(x):
+    # Eggholder function:
+    # xi ∈ [-512, 512]
+    # min is f(512, 404.2319) =-959.6407
     x1 = x[0]
     x2 = x[1]
     result = -(x2 + 47) * math.sin(math.sqrt(math.fabs(x1 + x2/2 + 47))) - x1 * math.sin(math.sqrt(math.fabs(x1 - x2 - 47)))
     return result
 
+def f24(x):
+    # Ackley's function
+    # xi ∈ [-5, 5]
+    # min is f(0, 0) = 0
+    x1 = x[0]
+    x2 = x[1]
+    s1 = -20 * math.exp(-math.sqrt((x1 ** 2 + x2 ** 2)/50))
+    s2 = math.exp(0.5 * math.cos(2 * math.pi * x1) + math.cos(2 * math.pi * x2))
+    result = s1 - s2 + 20 + math.e
+    return result
 
+def f25(x):
+    # Beale 's function
+    # xi ∈ [-4.5, 4.5]
+    # min is f(3, 0.5) = 0
+    x1 = x[0]
+    x2 = x[1]
+    s1 = (1.5 - x1 + x1 * x2) ** 2
+    s2 = (2.25 - x1 + x1 * x2 * x2) ** 2
+    s3 = (2.625 - x1 + x1 * x2 * x2 * x2) ** 2
+    result = s1 + s2 + s3
+    return result
+
+def f26(x):
+    # Lévi function N.13
+    # xi ∈ [-10, 10]
+    # min is f(1, 1) = 0
+    x1 = x[0]
+    x2 = x[1]
+    s1 = (math.sin(3 * math.pi * x1)) ** 2
+    s2 = (x1 - 1) * (x1 - 1) * (1 + (math.sin(3 * math.pi * x2)) ** 2)
+    s3 = (x2 - 1) * (x2 - 1) * (1 + (math.sin(3 * math.pi * x2)) ** 2)
+    result = s1 + s2 + s3
+    return result
+
+def f27(x):
+    # Cross-in-tray function:
+    # xi ∈ [-10, 10]
+    # min is f(±1.34941, ±1.34941) = -2.06261
+    x1 = x[0]
+    x2 = x[1]
+    s1 = abs(100 - math.sqrt(x1 * x1 + x2 * x2) / math.pi)
+    s2 = math.sin(x1) * math.sin(x2) * math.exp(s1)
+    s3 = -0.0001 * math.pow((abs(s2) + 1), 0.1)
+    result = s3
+    return result
+
+if __name__ == '__main__':
+    pass
