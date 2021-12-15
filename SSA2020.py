@@ -14,6 +14,7 @@ Ref:A novel swarm intelligence optimization approach: sparrow search algorithm.p
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import test_function
 
 class SSA():
     def __init__(self, func, n_dim=None, pop_size=20, max_iter=50, lb=-512, ub=512, verbose=False):
@@ -52,10 +53,8 @@ class SSA():
         self.y_max = self.Y[self.idx_max]
 
     def cal_y(self, start, end):
-        # calculate y for every x in X
         for i in range(start, end):
             self.Y[i] = self.func(self.X[i])
-        # return self.Y
 
     def update_pbest(self):
         '''
@@ -111,14 +110,11 @@ class SSA():
             best_idx = self.Y[0:self.pNum].index(min(self.Y[0:self.pNum]))
             bestXX = self.X[best_idx, :]
             if i > self.pop/2: 
-                Q = np.random.rand(1)  
-                # todo(LucXiong): 这里新生成的麻雀坐标可能会越界不在[lb, ub]限制内，即使在line117限制了，但是可能会导致新生成的坐标都在边界上
+                Q = np.random.rand(1)
                 self.X[self.idx[i],:] = Q*np.exp((self.x_max-self.X[self.idx[i],:])/np.square(i))
             else: 
                 self.X[self.idx[i],:] = bestXX+np.dot(np.abs(self.X[self.idx[i],:]-bestXX),1/(A.T*np.dot(A,A.T)))*np.ones((1, self.n_dim))
         self.X = np.clip(self.X, self.lb, self.ub)  # 对超过边界的变量进行去除
-            # X[self.idx[i],:] = Bounds(X[self.idx[i],lb,ub)
-            # fit[self.idx[i],0] = func(X[self.idx[i], :])
         self.cal_y(self.pNum, self.pop)
 
     def detect(self):
@@ -131,10 +127,7 @@ class SSA():
                 self.X[b[j], :] = self.gbest_y + np.random.rand(1, self.n_dim) * np.abs(self.X[b[j], :] - self.gbest_y)
             else:
                 self.X[b[j], :] = self.X[b[j], :]+(2*np.random.rand(1)-1)*np.abs(self.X[b[j], :]-self.x_max)/(self.func(self.X[b[j]])-self.y_max+e)
-            #     print(f'\t{j}\t{bestX}')
-            # X[sortIndex[0, b[j]], :] = Bounds(X[sortIndex[0, b[j]], :], lb, ub)
-            # fit[sortIndex[0, b[j]], 0] = func(X[sortIndex[0, b[j]]])
-            self.X = np.clip(self.X, self.lb, self.ub)  # 对超过边界的变量进行去除
+            self.X = np.clip(self.X, self.lb, self.ub)
             self.Y[b[j]] = self.func(self.X[b[j]])
 
     def run(self, max_iter=None):
@@ -151,27 +144,14 @@ class SSA():
             self.gbest_y_hist.append(self.gbest_y)
         return self.best_x, self.best_y
 
-
-def test_func(x):
-    x1 = x[0]
-    x2 = x[1]
-    result = -(x2 + 47) * math.sin(math.sqrt(math.fabs(x1 + x2/2 + 47))) - x1 * math.sin(math.sqrt(math.fabs(x1 - x2 - 47)))
-    return result
-
-def f13(x):
-    x1 = x[0]
-    x2 = x[1]
-    result = 4 * x1 ** - 2.1 * x1 ** 4 + x1 ** 6 /3 + x1 * x2 - 4 * x2 ** 2 + 4 * x2 ** 4
-    return result
-
-
-
 if __name__ == '__main__':
-    # lb = [-512, -512]
-    # ub = [512, 512]
-    lb = [-5, -5]
-    ub = [5, 5]
-    ssa = SSA(f24, n_dim=2, pop_size=40, max_iter=150, lb=lb, ub=ub)
+    n_dim = 30
+    lb = [-100 for i in range(n_dim)]
+    ub = [100 for i in range(n_dim)]
+    demo_func = test_function.fu5
+    pop_size = 100
+    max_iter = 100
+    ssa = SSA(demo_func, n_dim=n_dim, pop_size=pop_size, max_iter=max_iter, lb=lb, ub=ub)
     ssa.run()
     print('best_x is ', ssa.gbest_x, 'best_y is', ssa.gbest_y)
     # print(f'{demo_func(ssa.gbest_x)}\t{ssa.gbest_x}')
