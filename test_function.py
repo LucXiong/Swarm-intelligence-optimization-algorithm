@@ -23,7 +23,8 @@ https://blog.csdn.net/miscclp/article/details/38102831
 """
 
 import math
-
+import random
+from scipy.stats import norm
 # Unimodal test functions
 def fu1(x):
     # Sphere function
@@ -86,7 +87,14 @@ def fu6(x):
         '''
     s1 = 0
     for i in range(len(x) - 1):
-        s1 += (100 * (x[i+1] - x[i] ** 2) ** 2 + (x[i] - 1))
+        s1 += (100 * (x[i+1] - x[i] ** 2) ** 2 + (x[i] - 1) ** 2)
+    result = s1
+    return result
+
+def fu7(x):
+    s1 = 0
+    for i in range(len(x)):
+        s1 += (i * x[i] ** 4 + norm.rvs())
     result = s1
     return result
 
@@ -105,7 +113,7 @@ def fm1(x): # Eggholder Function
 def fm2(x):
     '''
     GRIEWANK FUNCTION:http://www.sfu.ca/~ssurjano/griewank.html
-    :param x:
+    :param x:-600,600
     :return:
     '''
     s1 = 0
@@ -119,6 +127,7 @@ def fm2(x):
 
 def fm3(x):
     # min is −418.9829 * len(x)
+    # x: -500, 500
     s1 = 0
     for i in range(len(x)):
         s1 += -x[i] * math.sin(math.sqrt(abs(x[i])))
@@ -144,12 +153,47 @@ def fm4(x):
     result = s1 + s2 + a + math.exp(1)
     return result
 
+def fm5(x):
+    # x: -50, 50
+    def y(xi):
+        y = 1 + (xi + 1) / 4
+        return y
+
+    def u(xi):
+        a  = 10
+        k = 100
+        m = 4
+        if xi > a:
+            u = k * pow((xi -a), m)
+        elif xi < -a:
+            u = k * pow((-xi - a), m)
+        else:
+            u = 0
+        return u
+
+    s1 = 10 * math.sin(math.pi * y(x[0])) ** 2 + (y(x[-1]) - 1) ** 2
+    # s1 = 10 * math.sin(math.pi * y(x[0])) + (y(x[-1]) - 1) ** 2
+    # 在已有的算法文章中使用的关于fm5的测试函数s1 = 10 * math.sin(math.pi * y(x[0])) + (y(x[-1]) - 1) ** 2
+    # Xue J, Shen B. A novel swarm intelligence optimization approach: sparrow search algorithm[J].
+    # Systems Science & Control Engineering, 2020, 8(1): 22-34. 中的F12
+    #Mirjalili S, Lewis A. The Whale Optimization Algorithm[J]. Advances in Engineering Software,
+    # 2016, 95: 51-67. 中的F12
+    # 但是在这种情况下，该测试函数的理论最小值显然不是0；因此怀疑文章关于此测试函数的描述出现了问题
+    # 比如当x[0]=1,x[i]=-1(i!=0)时，此时的F12<0
+    for i in range(len(x)-1):
+        s1 += ((y(x[i]) - 1) ** 2 * (1 + 10 * math.sin(math.pi * y(x[i+1])) ** 2))
+    s2 = 0
+    for i in range(len(x)):
+        s2 += u(x[i])
+    result = s1 * math.pi / len(x) + s2
+    return result
+
 # . Fixed-dimension test functions
 # two dimension
 def f21(x):
     '''
     BUKIN FUNCTION N. 6:http://www.sfu.ca/~ssurjano/bukin6.html
-    :param x:xi ∈ [-32.768, 32.768]
+    :param x: x1 ∈ [-15, -5], x2 ∈ [-3, 3].
     :return:
     '''
     s1 = 100 * math.sqrt(abs(x[1] - 0.01 * x[0] ** 2))
