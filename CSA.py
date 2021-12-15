@@ -16,7 +16,9 @@ Ref:
 
 import random  # random Function
 import numpy as np # numpy operations
+import matplotlib.pyplot as plt
 import math  # ceil function
+import test_function
 
 class CSA():
     def __init__(self, pop_size=5, n_dim=2, ap=0.1, lb=-1e5, ub=1e5, max_iter=20, func=None):
@@ -25,7 +27,7 @@ class CSA():
         self.ap = ap # 感知概率
         self.func = func
         self.max_iter = max_iter  # max iter
-        self.fly_length = [2, 2] # 飞行距离，可以考虑是否采用莱维飞行或者随迭代次数改变
+        self.fly_length = [2 for _ in range(self.n_dim)] # 飞行距离，可以考虑是否采用莱维飞行或者随迭代次数改变
         # 或许也和变量维数相关
         self.lb, self.ub = np.array(lb) * np.ones(self.n_dim), np.array(ub) * np.ones(self.n_dim)
         assert self.n_dim == len(self.lb) == len(self.ub), 'dim == len(lb) == len(ub) is not True'
@@ -41,28 +43,15 @@ class CSA():
         self.gbest_y_hist = []  # gbest_y of every iteration
         self.update_gbest()
 
-    def cal_y(self):
-        # calculate y for every x in X
-        self.Y = self.func(self.X).reshape(-1, 1)
-        print(self.Y)
-        return self.Y
-
     def update_pbest(self):
         '''
         personal best
         :return:
         '''
-        # self.need_update = self.pbest_y > self.Y
-        # print(self.need_update)
-        # print(self.pbest_y)
-        # print(self.Y)
         for i in range(len(self.Y)):
             if self.pbest_y[i] > self.Y[i]:
                 self.pbest_x[i] = self.X[i]
                 self.pbest_y[i] = self.Y[i]
-        # self.pbest_x = np.where(self.need_update, self.X, self.pbest_x)
-        # self.pbest_y = np.where(self.need_update, self.Y, self.pbest_y)
-        # print(self.pbest_x)
 
     def update_gbest(self):
         '''
@@ -76,7 +65,6 @@ class CSA():
 
     def update(self):
         num = np.array([random.randint(0, self.pop - 1) for _ in range(self.pop)])  # Generation of random candidate crows for following (chasing)
-        xnew = np.empty((self.pop, self.n_dim))
         for i in range(self.pop):
             if (random.random() > self.ap):
                 for j in range(self.n_dim):
@@ -96,22 +84,17 @@ class CSA():
         self.best_x, self.best_y = self.gbest_x, self.gbest_y
         return self.best_x, self.best_y
 
-
-def demo_func(x):
-    x1 = x[0]
-    x2 = x[1]
-    result = 4 * x1 ** 2 - 2.1 * x1 ** 4 + x1 ** 6 /3 + x1 * x2 - 4 * x2 ** 2 + 4 * x2 ** 4
-    return result
-
 if __name__ == '__main__':
-    lb = [-5, -5]
-    ub = [5, 5]
-    csa = CSA(n_dim=2, pop_size=40, max_iter=150, lb=lb, ub=ub, func=demo_func)
+    # todo(xionglei@sjtu.edu.cn): 哪里有问题，复现的寻优效果很差
+    n_dim = 30
+    lb = [-100 for i in range(n_dim)]
+    ub = [100 for i in range(n_dim)]
+    demo_func = test_function.fu2
+    pop_size = 100
+    max_iter = 1000
+    csa = CSA(n_dim=n_dim, pop_size=pop_size, max_iter=max_iter, lb=lb, ub=ub, func=demo_func)
     best_x, bext_y = csa.run()
-    print(csa.X)
-    print(csa.Y)
-    print('sss')
-    print(best_x)
-    print(bext_y)
-    print(demo_func(best_x))
+    print(f'{demo_func(csa.gbest_x)}\t{csa.gbest_x}')
+    plt.plot(csa.gbest_y_hist)
+    plt.show()
 
