@@ -17,10 +17,10 @@ import math
 import random
 import os
 import matplotlib.pyplot as plt
-from test_func import *
+import test_function
 
 class salp_swarm_algorithm():
-    def __init__(self, pop_size=50, n_dim=2, max_iter=150, lb=[-5,-5], ub=[5,5], func=target_function):
+    def __init__(self, pop_size=50, n_dim=2, max_iter=150, lb=[-5,-5], ub=[5,5], func=None):
         self.pop = pop_size
         self.lb = lb
         self.ub = ub
@@ -44,17 +44,10 @@ class salp_swarm_algorithm():
         personal best
         :return:
         '''
-        # self.need_update = self.pbest_y > self.Y
-        # print(self.need_update)
-        # print(self.pbest_y)
-        # print(self.Y)
         for i in range(len(self.Y)):
             if self.pbest_y[i] > self.Y[i]:
                 self.pbest_x[i] = self.X[i]
                 self.pbest_y[i] = self.Y[i]
-        # self.pbest_x = np.where(self.need_update, self.X, self.pbest_x)
-        # self.pbest_y = np.where(self.need_update, self.Y, self.pbest_y)
-        # print(self.pbest_x)
 
     def update_gbest(self):
         '''
@@ -105,7 +98,7 @@ if __name__ == '__main__':
     n_dim = 30
     lb = [-5 for i in range(n_dim)]
     ub = [5 for i in range(n_dim)]
-    demo_func = fu1
+    demo_func = test_function.fu1
     ssa = salp_swarm_algorithm(pop_size=50, n_dim=n_dim, max_iter=150, lb=lb, ub=ub, func=demo_func)
     ssa.run()
     print('best_x is ', ssa.gbest_x, 'best_y is', ssa.gbest_y)
