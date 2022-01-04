@@ -63,9 +63,7 @@ class PSO():
     def update_V(self):
         r1 = np.random.rand(self.pop, self.n_dim)
         r2 = np.random.rand(self.pop, self.n_dim)
-        self.V = self.w * self.V + \
-                 self.cp * r1 * (self.pbest_x - self.X) + \
-                 self.cg * r2 * (self.gbest_x - self.X)
+        self.V = self.w * self.V + self.cp * r1 * (self.pbest_x - self.X) + self.cg * r2 * (self.gbest_x - self.X)
 
     def update(self):
         for i in range(self.pop):
