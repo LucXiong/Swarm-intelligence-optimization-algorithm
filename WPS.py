@@ -98,3 +98,4 @@ if __name__ == '__main__':
     print(f'{demo_func(ssa.gbest_x)}\t{ssa.gbest_x}')
     plt.plot(ssa.gbest_y_hist)
     plt.show()
+    # test upload
