@@ -1,8 +1,8 @@
 # Swarm-intelligence-optimization-algorithm
-种群算法复现，由于已由[大佬](https://github.com/guofei9987/scikit-opt)开发了种群算法的第三方库，标<sup>*</sup>的表示从中copy过来的，但是删除了其中部分带有约束的部分，所以如果需要带有约束的原始算法可以去[大佬](https://github.com/guofei9987/scikit-opt)开发的种群算法的第三方库。这里会补充已有的[第三方种群算法库](https://github.com/HaaLeo/swarmlib)没有的一些种群算法。
+种群算法复现，由于已由[大佬](https://github.com/guofei9987/scikit-opt)开发了种群算法的第三方库，包括退火算法(SA)、粒子群算法(PSO)、人工免疫算法(IA)、遗传算法(GA)、差分进化算法(DE)、人工鱼群算法(AFSA)、蚁群算法(ACA)，标<sup>*1</sup>的表示从中copy过来的，但是删除了其中部分带有约束的部分，所以如果需要带有约束的原始算法可以去[大佬](https://github.com/guofei9987/scikit-opt)开发的种群算法的第三方库。另一个已有的[第三方种群算法库](https://github.com/HaaLeo/swarmlib)包括布谷鸟搜索算法(CS)、萤火虫算法(FA)、灰狼算法(GWO)、鲸鱼算法(WOA)，标<sup>*2</sup>的表示从中copy过来的。如有冒犯或者侵权，可联系[我](xionglei@sjtu.edu.cn)删除。此仓库新增了二者没有一些种群算法。
 
-粒子群算法(PSO<sup>*</sup>1995)、乌鸦搜索(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)，狼群搜索算法(WPS2007, WPA2013)，正余弦优化算法(CSA2016)
-## 1995 Particle Swarm Optimization(PSO)<sup>*</sup>
+粒子群算法(PSO<sup>*1</sup>1995)、乌鸦搜索(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)，狼群搜索算法(WPS2007, WPA2013)，正余弦优化算法(CSA2016)
+## 1995 Particle Swarm Optimization(PSO)<sup>*1</sup>
 Kennedy J, Eberhart R. Particle swarm optimization[C]// [Particle swarm optimization](https://ieeexplore.ieee.org/abstract/document/488968). Proceedings of ICNN'95 - International Conference on Neural Networks, 27 Nov.-1 Dec. 1995.4: 1942-8 vol.4.
 ## 2007 Wolf Pack Search(WPS)
 Yang C, Tu X, Chen J. [Algorithm of Marriage in Honey Bees Optimization Based on the Wolf Pack Search](https://www.computer.org/csdl/proceedings-article/ipc/2007/30060462/12OmNzC5T5U), Jeju Island, Korea, 2007: 462-7.
