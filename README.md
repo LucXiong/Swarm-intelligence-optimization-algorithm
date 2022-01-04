@@ -1,5 +1,5 @@
 # Swarm-intelligence-optimization-algorithm
-种群算法复现，包括
+种群算法复现，由于已由[大佬](https://github.com/guofei9987/scikit-opt)开发了种群算法的第三方库，标<sup>*</sup>的表示从中copy过来的，但是删除了其中部分带有约束的部分，所以如果需要带有约束的原始算法可以去[大佬](https://github.com/guofei9987/scikit-opt)开发的种群算法的第三方库。这里会补充已有的[第三方种群算法库](https://github.com/HaaLeo/swarmlib)没有的一些种群算法。
 粒子群算法(PSO<sup>*</sup>1995)、乌鸦搜索(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)，狼群搜索算法(WPS2007, WPA2013)，正余弦优化算法(CSA2016)
 ## 1995 Particle Swarm Optimization(PSO)<sup>*</sup>
 Kennedy J, Eberhart R. Particle swarm optimization[C]// [Particle swarm optimization](https://ieeexplore.ieee.org/abstract/document/488968). Proceedings of ICNN'95 - International Conference on Neural Networks, 27 Nov.-1 Dec. 1995.4: 1942-8 vol.4.
