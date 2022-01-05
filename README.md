@@ -9,6 +9,16 @@ pip install swarm-algorithm
 粒子群算法(PSO<sup>*1</sup>1995)、烟花算法(FA2010)、乌鸦搜索(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)，狼群搜索算法(WPS2007, WPA2013)，正余弦优化算法(CSA2016)
 ## 1995 Particle Swarm Optimization(PSO)<sup>*1</sup>
 Kennedy J, Eberhart R. Particle swarm optimization[C]// [Particle swarm optimization](https://ieeexplore.ieee.org/abstract/document/488968). Proceedings of ICNN'95 - International Conference on Neural Networks, 27 Nov.-1 Dec. 1995.4: 1942-8 vol.4.
+```python
+import swarm-algorithm
+pso = swarm-algorithm.PSO(func, n_dim=20, pop=40, max_iter=150, lb=-1e5, ub=1e5, w=0.8, c1=0.5, c2=0.5)
+# n_dim : 变量维数
+# pop : 种群数量
+# max_iter : 最大迭代次数
+# lb : 变量下界，维数为n_dim的列表
+# ub : 变量上届，维数为n_dim的列表
+# w、c1、c2 : 粒子更新规则的相关参数
+```
 ## 2007 Wolf Pack Search(WPS)
 Yang C, Tu X, Chen J. [Algorithm of Marriage in Honey Bees Optimization Based on the Wolf Pack Search](https://www.computer.org/csdl/proceedings-article/ipc/2007/30060462/12OmNzC5T5U), Jeju Island, Korea, 2007: 462-7.
 ## 2010 Fireworks Algorithm(FA2010)
