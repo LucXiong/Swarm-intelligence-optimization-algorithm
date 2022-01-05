@@ -18,15 +18,15 @@ pso = swarm-algorithm.PSO(func, n_dim=20, pop=40, max_iter=150, lb=-1e5, ub=1e5,
 # lb : 变量下界，维数为n_dim的列表
 # ub : 变量上届，维数为n_dim的列表
 # w、c1、c2 : 粒子更新规则的相关参数
-  n_dim = 30
-  lb = [-100 for i in range(n_dim)]
-  ub = [100 for i in range(n_dim)]
-  demo_func = test_function.fu2
-  pop_size = 100
-  max_iter = 1000
-  pso = PSO(func=demo_func, n_dim=n_dim, pop=100, max_iter=1000, lb=lb, ub=ub, w=0.8, c1=0.5, c2=0.5)
-  best_x, bext_y = pso.run()
-  print(f'{demo_func(pso.gbest_x)}\t{pso.gbest_x}')
+n_dim = 30
+lb = [-100 for i in range(n_dim)]
+ub = [100 for i in range(n_dim)]
+demo_func = test_function.fu2
+pop_size = 100
+max_iter = 1000
+pso = PSO(func=demo_func, n_dim=n_dim, pop=100, max_iter=1000, lb=lb, ub=ub, w=0.8, c1=0.5, c2=0.5)
+best_x, bext_y = pso.run()
+print(f'{demo_func(pso.gbest_x)}\t{pso.gbest_x}')
 ```
 ## 2007 Wolf Pack Search(WPS)
 Yang C, Tu X, Chen J. [Algorithm of Marriage in Honey Bees Optimization Based on the Wolf Pack Search](https://www.computer.org/csdl/proceedings-article/ipc/2007/30060462/12OmNzC5T5U), Jeju Island, Korea, 2007: 462-7.
