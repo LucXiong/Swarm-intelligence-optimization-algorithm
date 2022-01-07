@@ -158,14 +158,14 @@ class FA():
 
     def run(self):
         for i in range(self.max_iter):
-            print(i)
-            print(len(self.X))
+            # print(i)
+            # print(len(self.X))
             self.CalculateSi()
             self.CalculateExpo()
             self.Explosion()
-            print(len(self.X))
+            # print(len(self.X))
             self.Mutation()
-            print(len(self.X))
+            # print(len(self.X))
             bestindex = self.Y.index(min(self.Y))
             if self.gbest_y_hist[-1] > self.Y[bestindex]:
                 self.gbest_y_hist.append(self.Y[bestindex])
@@ -173,7 +173,7 @@ class FA():
             else:
                 self.gbest_y_hist.append(self.gbest_y_hist[-1])
             self.Selection()
-            print(self.gbest_y_hist[-1])
+            # print(self.gbest_y_hist[-1])
         return self.gbest_x, self.gbest_y_hist[-1]
 
 if __name__ == '__main__':
