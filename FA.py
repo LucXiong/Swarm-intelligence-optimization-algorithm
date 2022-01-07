@@ -40,36 +40,12 @@ class FA():
         self.X = self.X.tolist()
         self.Y = [self.func(self.X[i]) for i in range(len(self.X))]  # y = f(x) for all particles
 
-        # self.pbest_x = self.X.copy()  # personal best location of every particle in history
-        # self.pbest_y = [np.inf for i in range(self.pop)]  # best image of every particle in history
-        # self.fit = [1 / (1 + self.Y[i]) if self.Y[i] > 0 else 1 - self.Y[i] for i in range(self.pop)]
-        # self.prob = [self.fit[i] / sum(self.fit) for i in range(self.pop)]
         self.bestindex = self.Y.index(min(self.Y))
         self.gbest_x = self.X[self.bestindex]
         self.gbest_y = min(self.Y) # global best y for all particles
         self.gbest_y_hist = [self.gbest_y]  # gbest_y of every iteration
         # self.update_gbest()
 
-
-    # def update_pbest(self):
-    #     '''
-    #     personal best
-    #     :return:
-    #     '''
-    #     for i in range(len(self.Y)):
-    #         if self.pbest_y[i] > self.Y[i]:
-    #             self.pbest_x[i] = self.X[i]
-    #             self.pbest_y[i] = self.Y[i]
-    #
-    # def update_gbest(self):
-    #     '''
-    #     global best
-    #     :return:
-    #     '''
-    #     idx_min = self.pbest_y.index(min(self.pbest_y))
-    #     if self.gbest_y > self.pbest_y[idx_min]:
-    #         self.gbest_x = self.X[idx_min, :].copy()
-    #         self.gbest_y = self.pbest_y[idx_min]
 
     def CalculateSi(self):
         self.MaxFitness = max(self.Y)
@@ -177,12 +153,12 @@ class FA():
         return self.gbest_x, self.gbest_y_hist[-1]
 
 if __name__ == '__main__':
-    n_dim = 30
+    n_dim = 3
     lb = [-100 for i in range(n_dim)]
     ub = [100 for i in range(n_dim)]
     demo_func = test_function.fm2
-    pop_size = 100
-    max_iter = 200
+    pop_size = 10
+    max_iter = 20
     fa = FA(n_dim=n_dim, pop_size=pop_size, max_iter=max_iter, lb=lb, ub=ub, func=demo_func)
     best_x, bext_y = fa.run()
     print(f'{demo_func(fa.gbest_x)}\t{fa.gbest_x}')
