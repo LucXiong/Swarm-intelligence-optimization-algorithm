@@ -1,9 +1,33 @@
 # Swarm-intelligence-optimization-algorithm
 种群算法复现，由于已由[大佬](https://github.com/guofei9987/scikit-opt)开发了种群算法的第三方库，包括退火算法(SA)、粒子群算法(PSO)、人工免疫算法(IA)、遗传算法(GA)、差分进化算法(DE)、人工鱼群算法(AFSA)、蚁群算法(ACA)，标<sup>*1</sup>的表示从中copy过来的，但是删除了其中部分带有约束的部分，所以如果需要带有约束的原始算法可以去[大佬](https://github.com/guofei9987/scikit-opt)开发的种群算法的第三方库。另一个已有的[第三方种群算法库](https://github.com/HaaLeo/swarmlib)包括布谷鸟搜索算法(CS)、萤火虫算法(FA2009)、灰狼算法(GWO)、鲸鱼算法(WOA)、人工蜂群算法(ABC)，标<sup>*2</sup>的表示从中copy过来的。如有冒犯或者侵权，可联系删除。此仓库新增了二者没有一些种群算法。
+可安装此第三方库调用此仓库已复现种群算法，若有问题，可随时联系。
 
-粒子群算法(PSO<sup>*1</sup>1995)、乌鸦搜索(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)，狼群搜索算法(WPS2007, WPA2013)，正余弦优化算法(CSA2016)
+```python
+pip install swarm-algorithm
+```
+
+粒子群算法(PSO<sup>*1</sup>1995)、烟花算法(FA2010)、乌鸦搜索(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)，狼群搜索算法(WPS2007, WPA2013)，正余弦优化算法(CSA2016)
 ## 1995 Particle Swarm Optimization(PSO)<sup>*1</sup>
 Kennedy J, Eberhart R. Particle swarm optimization[C]// [Particle swarm optimization](https://ieeexplore.ieee.org/abstract/document/488968). Proceedings of ICNN'95 - International Conference on Neural Networks, 27 Nov.-1 Dec. 1995.4: 1942-8 vol.4.
+```python
+import swarm-algorithm
+pso = swarm-algorithm.PSO(func, n_dim=20, pop=40, max_iter=150, lb=-1e5, ub=1e5, w=0.8, c1=0.5, c2=0.5)
+# n_dim : 变量维数
+# pop : 种群数量
+# max_iter : 最大迭代次数
+# lb : 变量下界，维数为n_dim的列表
+# ub : 变量上届，维数为n_dim的列表
+# w、c1、c2 : 粒子更新规则的相关参数
+n_dim = 30
+lb = [-100 for i in range(n_dim)]
+ub = [100 for i in range(n_dim)]
+demo_func = test_function.fu2
+pop_size = 100
+max_iter = 1000
+pso = PSO(func=demo_func, n_dim=n_dim, pop=100, max_iter=1000, lb=lb, ub=ub, w=0.8, c1=0.5, c2=0.5)
+best_x, bext_y = pso.run()
+print(f'{demo_func(pso.gbest_x)}\t{pso.gbest_x}')
+```
 ## 2007 Wolf Pack Search(WPS)
 Yang C, Tu X, Chen J. [Algorithm of Marriage in Honey Bees Optimization Based on the Wolf Pack Search](https://www.computer.org/csdl/proceedings-article/ipc/2007/30060462/12OmNzC5T5U), Jeju Island, Korea, 2007: 462-7.
 ## 2010 Fireworks Algorithm(FA2010)
