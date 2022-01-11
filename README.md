@@ -1,4 +1,13 @@
 # Swarm-intelligence-optimization-algorithm
+
+[![PyPI](https://img.shields.io/pypi/v/swarm-algorithm)](https://pypi.org/project/swarm-algorithm/)
+[![License](https://img.shields.io/pypi/l/swarm-algorithm.svg)](https://github.com/LucXiong/Swarm-intelligence-optimization-algorithm/blob/master/LICENSE)
+![Python](https://img.shields.io/badge/python->=3.5-green.svg)
+[![fork](https://img.shields.io/github/forks/LucXiong/Swarm-intelligence-optimization-algorithm?style=social)](https://github.com/LucXiong/Swarm-intelligence-optimization-algorithm/fork)
+[![star](https://img.shields.io/github/stars/LucXiong/Swarm-intelligence-optimization-algorithm?style=social)](https://github.com/LucXiong/Swarm-intelligence-optimization-algorithm/star)
+[![Downloads](https://pepy.tech/badge/swarm-algorithm)](https://pepy.tech/project/swarm-algorithm)
+[![Discussions](https://img.shields.io/badge/discussions-green.svg)](https://github.com/LucXiong/Swarm-intelligence-optimization-algorithm/discussions)
+
 种群算法复现，由于已由[大佬](https://github.com/guofei9987/scikit-opt)开发了种群算法的第三方库，包括退火算法(SA)、粒子群算法(PSO)、人工免疫算法(IA)、遗传算法(GA)、差分进化算法(DE)、人工鱼群算法(AFSA)、蚁群算法(ACA)，标<sup>*1</sup>的表示从中copy过来的，但是删除了其中部分带有约束的部分，所以如果需要带有约束的原始算法可以去[大佬](https://github.com/guofei9987/scikit-opt)开发的种群算法的第三方库。另一个已有的[第三方种群算法库](https://github.com/HaaLeo/swarmlib)包括布谷鸟搜索算法(CS)、萤火虫算法(FA2009)、灰狼算法(GWO)、鲸鱼算法(WOA)、人工蜂群算法(ABC)，标<sup>*2</sup>的表示从中copy过来的。如有冒犯或者侵权，可联系删除。此仓库新增了二者没有一些种群算法。
 可安装此第三方库调用此仓库已复现种群算法，若有问题，可随时联系。
 
