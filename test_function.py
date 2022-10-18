@@ -8,20 +8,6 @@
 """
 https://blog.csdn.net/miscclp/article/details/38102831
 """
-
-import math
-
-# ！usr/bin/env python
-# -*- coding: utf-8 -*-
-# Time : 2021/12/6 10:44
-# @Author : LucXiong
-# @Project : Model
-# @File : test_func.py
-
-"""
-https://blog.csdn.net/miscclp/article/details/38102831
-"""
-
 import math
 import random
 from scipy.stats import norm
