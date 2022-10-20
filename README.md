@@ -15,7 +15,7 @@
 pip install swarm-algorithm
 ```
 
-遗传算法（DA）、差分进化算法（DE）、粒子群算法(PSO<sup>*1</sup>1995)、引力搜索算法（GSA2009）、烟花算法(FA2010)、乌鸦搜索(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)，狼群搜索算法(WPS2007, WPA2013)，正余弦优化算法(CSA2016)
+遗传算法（DA）、差分进化算法（DE）、粒子群算法(PSO<sup>*1</sup>1995)、狼群搜索算法(WPS2007, WPA2013)、引力搜索算法（GSA2009）、烟花算法(FA2010)、乌鸦搜索(CSA2016)、正余弦优化算法(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)
 ## 1995 Particle Swarm Optimization(PSO)<sup>*1</sup>
 Kennedy J, Eberhart R. Particle swarm optimization[C]// [Particle swarm optimization](https://ieeexplore.ieee.org/abstract/document/488968). Proceedings of ICNN'95 - International Conference on Neural Networks, 27 Nov.-1 Dec. 1995.4: 1942-8 vol.4.
 ```python
