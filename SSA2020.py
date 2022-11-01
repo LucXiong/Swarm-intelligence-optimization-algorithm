@@ -14,6 +14,8 @@ Ref:A novel swarm intelligence optimization approach: sparrow search algorithm.p
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+from scipy.stats import norm
+import random
 import test_function
 
 class SSA():
@@ -95,7 +97,8 @@ class SSA():
                 # fit[sortIndex[0, i], 0] = func(X[sortIndex[0, i], :])  # 算新的适应度值
         elif r2 >= 0.8:  # 预警值较大，说明有捕食者出现威胁到了种群的安全，需要去其它地方觅食
             for i in range(self.pNum):
-                Q = np.random.rand(1)  # 也可以替换成  np.random.normal(loc=0, scale=1.0, size=1)
+                # Q = np.random.rand(1)  # 也可以替换成
+                Q = np.random.normal(loc=0, scale=1.0, size=1)
                 self.X[self.idx[i], :] = self.X[self.idx[i], :] + Q * np.ones((1, self.n_dim))  # Q是服从正态分布的随机数。L表示一个1×d的矩阵
                 self.X = np.clip(self.X, self.lb, self.ub)  # 对超过边界的变量进行去除
                 # X[idx[i], :] = Bounds(X[sortIndex[0, i], :], lb, ub)
@@ -109,10 +112,10 @@ class SSA():
             A = np.floor(np.random.rand(1, self.n_dim) * 2) * 2 - 1
             best_idx = self.Y[0:self.pNum].index(min(self.Y[0:self.pNum]))
             bestXX = self.X[best_idx, :]
-            if i > self.pop/2: 
+            if i > self.pop/2:
                 Q = np.random.rand(1)
                 self.X[self.idx[i],:] = Q*np.exp((self.x_max-self.X[self.idx[i],:])/np.square(i))
-            else: 
+            else:
                 self.X[self.idx[i],:] = bestXX+np.dot(np.abs(self.X[self.idx[i],:]-bestXX),1/(A.T*np.dot(A,A.T)))*np.ones((1, self.n_dim))
         self.X = np.clip(self.X, self.lb, self.ub)  # 对超过边界的变量进行去除
         self.cal_y(self.pNum, self.pop)
@@ -124,7 +127,7 @@ class SSA():
         e = 10e-10
         for j in range(len(b)):
             if self.Y[b[j]] > self.gbest_y:
-                self.X[b[j], :] = self.gbest_y + np.random.rand(1, self.n_dim) * np.abs(self.X[b[j], :] - self.gbest_y)
+                self.X[b[j], :] = self.gbest_x + norm.rvs(size=self.n_dim) * np.abs(self.X[b[j], :] - self.gbest_x)
             else:
                 self.X[b[j], :] = self.X[b[j], :]+(2*np.random.rand(1)-1)*np.abs(self.X[b[j], :]-self.x_max)/(self.func(self.X[b[j]])-self.y_max+e)
             self.X = np.clip(self.X, self.lb, self.ub)
@@ -138,6 +141,7 @@ class SSA():
             self.update_follower() # 更新跟随着位置
             self.update_pbest()
             self.update_gbest()
+            self.find_worst()  # 取出最大的适应度值和最差适应度的X
             self.detect()
             self.update_pbest()
             self.update_gbest()
