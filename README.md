@@ -15,7 +15,7 @@
 pip install swarm-algorithm
 ```
 
-遗传算法（DA）、差分进化算法（DE）、粒子群算法(PSO<sup>*1</sup>1995)、烟花算法(FA2010)、乌鸦搜索(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)，狼群搜索算法(WPS2007, WPA2013)，正余弦优化算法(CSA2016)
+遗传算法（DA）、差分进化算法（DE）、粒子群算法(PSO<sup>*1</sup>1995)、狼群搜索算法(WPS2007, WPA2013)、引力搜索算法（GSA2009）、烟花算法(FA2010)、乌鸦搜索(CSA2016)、正余弦优化算法(CSA2016)、樽海鞘群算法(SSA2017)、缎蓝园丁鸟优化算法(SBO2017)、麻雀搜索算法(SSA2020)
 ## 1995 Particle Swarm Optimization(PSO)<sup>*1</sup>
 Kennedy J, Eberhart R. Particle swarm optimization[C]// [Particle swarm optimization](https://ieeexplore.ieee.org/abstract/document/488968). Proceedings of ICNN'95 - International Conference on Neural Networks, 27 Nov.-1 Dec. 1995.4: 1942-8 vol.4.
 ```python
@@ -39,6 +39,8 @@ print(f'{demo_func(pso.gbest_x)}\t{pso.gbest_x}')
 ```
 ## 2007 Wolf Pack Search(WPS)
 Yang C, Tu X, Chen J. [Algorithm of Marriage in Honey Bees Optimization Based on the Wolf Pack Search](https://www.computer.org/csdl/proceedings-article/ipc/2007/30060462/12OmNzC5T5U), Jeju Island, Korea, 2007: 462-7.
+## 2009 Gravitational Search Algorithm（GSA）
+Rashedi E., Nezamabadi-Pour H., [Saryazdi S. GSA: A Gravitational Search Algorithm](https://www.sciencedirect.com/science/article/pii/S0020025509001200)[J]. Information Sciences, 2009, 179(13): 2232-48.
 ## 2010 Fireworks Algorithm(FA2010)
 Tan Y, Zhu Y. [Fireworks Algorithm for Optimization](https://www.researchgate.net/publication/220704568_Fireworks_Algorithm_for_Optimization#:~:text=Inspired%20by%20observing%20fireworks%20explosion%2C%20a%20novel%20swarm,keeping%20diversity%20of%20sparks%20are%20also%20well%20designed.)[M]. //  Lecture Notes in Computer Science. City: Springer Berlin Heidelberg, 2010: 355-64[2021-12-08T08:42:21]. 
 ## 2013 Wolf Pack Algorithm(WPA)
