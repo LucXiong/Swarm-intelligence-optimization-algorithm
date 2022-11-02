@@ -84,25 +84,21 @@ class SSA():
         self.y_max = self.Y[self.idx_max]
 
     def update_finder(self, iter_num):
-        r2 = np.random.rand(1)  # 预警值
         self.idx = sorted(enumerate(self.Y), key=lambda x: x[1])
         self.idx = [self.idx[i][0] for i in range(len(self.idx))]
         # 这一部位为发现者（探索者）的位置更新
-        if r2 < 0.8:  # 预警值较小，说明没有捕食者出现
-            for i in range(self.pNum):
+        for i in range(self.pNum):
+            r2 = np.random.rand(1)  # 预警值
+            if r2 < 0.8:  # 预警值较小，说明没有捕食者出现
                 r1 = np.random.rand(1)
-                self.X[self.idx[i], :] = self.X[self.idx[i], :] * np.exp(-(iter_num) / (r1 * self.max_iter))  # 对自变量做一个随机变换
-                self.X = np.clip(self.X, self.lb, self.ub) # 对超过边界的变量进行去除
-                # X[idx[i], :] = Bounds(X[idx[i], :], lb, ub)  # 对超过边界的变量进行去除
-                # fit[sortIndex[0, i], 0] = func(X[sortIndex[0, i], :])  # 算新的适应度值
-        elif r2 >= 0.8:  # 预警值较大，说明有捕食者出现威胁到了种群的安全，需要去其它地方觅食
-            for i in range(self.pNum):
-                # Q = np.random.rand(1)  # 也可以替换成
-                Q = np.random.normal(loc=0, scale=1.0, size=1)
-                self.X[self.idx[i], :] = self.X[self.idx[i], :] + Q * np.ones((1, self.n_dim))  # Q是服从正态分布的随机数。L表示一个1×d的矩阵
-                self.X = np.clip(self.X, self.lb, self.ub)  # 对超过边界的变量进行去除
-                # X[idx[i], :] = Bounds(X[sortIndex[0, i], :], lb, ub)
-                # fit[sortIndex[0, i], 0] = func(X[sortIndex[0, i], :])
+                self.X[self.idx[i], :] = self.X[self.idx[i], :] * np.exp(
+                    -(iter_num) / (r1 * self.max_iter))  # 对自变量做一个随机变换
+            else:
+                Q = np.random.normal(loc=0, scale=1.0,
+                                     size=1)  # np.random.rand(1)  # 也可以替换成  np.random.normal(loc=0, scale=1.0, size=1)
+                self.X[self.idx[i], :] = self.X[self.idx[i], :] + Q * np.ones(
+                    (1, self.n_dim))  # Q是服从正态分布的随机数。L表示一个1×d的矩阵
+        self.X = np.clip(self.X, self.lb, self.ub)  # 对超过边界的变量进行去除
         self.cal_y(0, self.pNum)
 
     def update_follower(self):
