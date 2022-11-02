@@ -83,7 +83,7 @@ class SSA():
         self.x_max = self.X[self.idx_max, :]
         self.y_max = self.Y[self.idx_max]
 
-    def update_finder(self):
+    def update_finder(self, iter_num):
         r2 = np.random.rand(1)  # 预警值
         self.idx = sorted(enumerate(self.Y), key=lambda x: x[1])
         self.idx = [self.idx[i][0] for i in range(len(self.idx))]
@@ -91,7 +91,7 @@ class SSA():
         if r2 < 0.8:  # 预警值较小，说明没有捕食者出现
             for i in range(self.pNum):
                 r1 = np.random.rand(1)
-                self.X[self.idx[i], :] = self.X[self.idx[i], :] * np.exp(-(i) / (r1 * self.max_iter))  # 对自变量做一个随机变换
+                self.X[self.idx[i], :] = self.X[self.idx[i], :] * np.exp(-(iter_num) / (r1 * self.max_iter))  # 对自变量做一个随机变换
                 self.X = np.clip(self.X, self.lb, self.ub) # 对超过边界的变量进行去除
                 # X[idx[i], :] = Bounds(X[idx[i], :], lb, ub)  # 对超过边界的变量进行去除
                 # fit[sortIndex[0, i], 0] = func(X[sortIndex[0, i], :])  # 算新的适应度值
@@ -136,7 +136,7 @@ class SSA():
     def run(self, max_iter=None):
         self.max_iter = max_iter or self.max_iter
         for iter_num in range(self.max_iter):
-            self.update_finder() # 更新发现者位置
+            self.update_finder(iter_num) # 更新发现者位置
             self.find_worst()  # 取出最大的适应度值和最差适应度的X
             self.update_follower() # 更新跟随着位置
             self.update_pbest()
